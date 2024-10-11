@@ -15,7 +15,6 @@
 #include <string>
 using namespace std;
 
-
 /** @brief return the next Fibonacci number
  *
  * The Fibonacci sequence is defined usually as
@@ -31,7 +30,7 @@ using namespace std;
  * e.g. the next Fibonacci number in the sequence is defined as the
  * sum of the previous two numbers in the sequence, with 0 and 1 being
  * the 0th and 1st term by definition of the sequence.
- * 
+ *
  * This funciton, when called, returns the next number in the Fibonacci
  * sequence.  We remember our previous two numbers generated (using
  * static variables).  A default parameter can be overridden to reset
@@ -47,8 +46,24 @@ using namespace std;
  *    the reset flag parameter to reset and begin generating from the start
  *    of the sequence again.
  */
-// your implementation of task 1 nextFibonacciNumber() goes here
-
+int nextFibonacciNumber(bool resetSequence)
+{
+  static int F_1;
+  static int F_2;
+  if (resetSequence)
+  {
+    F_2 = 0;
+    F_1 = 1;
+    return 1;
+  }
+  else
+  {
+    int memory = F_1 + F_2;
+    F_2 = F_1;
+    F_1 = memory;
+    return memory;
+  }
+}
 
 /** @brief swap two given integer values in memory
  *
@@ -74,7 +89,6 @@ void swap(int& a, int& b)
   a = b;
   b = temp;
 }
-
 
 /** @brief sort three values in ascending order
  *
