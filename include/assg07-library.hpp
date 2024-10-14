@@ -13,10 +13,11 @@
 #include <string>
 using namespace std;
 
-// function prototypes for Assignment
-
+int nextFibonacciNumber(bool resetSequence = false);
 // given to you to as example solutions from previous assignment
 void swap(int& a, int& b);
 void threeSort(int& a, int& b, int& c);
-
-
+void swap(char& a, char& b);
+void threeSort(char& a, char& b, char& c);
+void swap(string& a, string& b);
+void threeSort(string& a, string& b, string& c);

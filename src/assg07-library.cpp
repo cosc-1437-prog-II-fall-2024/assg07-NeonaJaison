@@ -15,7 +15,6 @@
 #include <string>
 using namespace std;
 
-
 /** @brief return the next Fibonacci number
  *
  * The Fibonacci sequence is defined usually as
@@ -31,7 +30,7 @@ using namespace std;
  * e.g. the next Fibonacci number in the sequence is defined as the
  * sum of the previous two numbers in the sequence, with 0 and 1 being
  * the 0th and 1st term by definition of the sequence.
- * 
+ *
  * This funciton, when called, returns the next number in the Fibonacci
  * sequence.  We remember our previous two numbers generated (using
  * static variables).  A default parameter can be overridden to reset
@@ -47,8 +46,24 @@ using namespace std;
  *    the reset flag parameter to reset and begin generating from the start
  *    of the sequence again.
  */
-// your implementation of task 1 nextFibonacciNumber() goes here
-
+int nextFibonacciNumber(bool resetSequence)
+{
+  static int F_1;
+  static int F_2;
+  if (resetSequence)
+  {
+    F_2 = 0;
+    F_1 = 1;
+    return 1;
+  }
+  else
+  {
+    int memory = F_1 + F_2;
+    F_2 = F_1;
+    F_1 = memory;
+    return memory;
+  }
+}
 
 /** @brief swap two given integer values in memory
  *
@@ -74,8 +89,18 @@ void swap(int& a, int& b)
   a = b;
   b = temp;
 }
-
-
+void swap(char& a, char& b)
+{
+  int temp = a;
+  a = b;
+  b = temp;
+}
+void swap(string& a, string& b)
+{
+  string temp = a;
+  a = b;
+  b = temp;
+}
 /** @brief sort three values in ascending order
  *
  * Given three integer values, passed in by reference,
@@ -95,21 +120,44 @@ void swap(int& a, int& b)
  */
 void threeSort(int& a, int& b, int& c)
 {
-  // swap a, b if out of order, guarantees larger of the two is now in b
   if (a > b)
   {
     swap(a, b);
   }
-
-  // swap b, c if out of order, guarantees that largest values has been
-  // now bubbled to c
   if (b > c)
   {
     swap(b, c);
   }
-
-  // it is still possible after this "bubble pass" that a and b are out of
-  // order, so check and swap them if needed
+  if (a > b)
+  {
+    swap(a, b);
+  }
+}
+void threeSort(char& a, char& b, char& c)
+{
+  if (a > b)
+  {
+    swap(a, b);
+  }
+  if (b > c)
+  {
+    swap(b, c);
+  }
+  if (a > b)
+  {
+    swap(a, b);
+  }
+}
+void threeSort(string& a, string& b, string& c)
+{
+  if (a > b)
+  {
+    swap(a, b);
+  }
+  if (b > c)
+  {
+    swap(b, c);
+  }
   if (a > b)
   {
     swap(a, b);
